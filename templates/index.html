@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse the latest BigQuery release notes from Google Cloud. Stay up-to-date with features, changes, and announcements." />
+  <title>BigQuery Release Notes</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔵</text></svg>" />
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────── -->
+  <header role="banner">
+    <div class="header-inner">
+      <div class="logo-group">
+        <div class="logo-icon" aria-hidden="true">⬡</div>
+        <div>
+          <span class="logo-text">BigQuery Release Notes</span>
+          <span class="logo-sub">Google Cloud · Live Feed</span>
+        </div>
+      </div>
+
+      <div class="header-meta">
+        <span id="last-fetched" aria-live="polite"></span>
+        <button id="refresh-btn" aria-label="Refresh release notes">
+          <span id="btn-spinner" class="spinner" style="display:none;" aria-hidden="true"></span>
+          <span id="btn-icon" class="btn-icon" aria-hidden="true">↻</span>
+          <span id="btn-label">Refresh</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main ───────────────────────────────────── -->
+  <main role="main">
+
+    <!-- Stats bar -->
+    <div id="stats-bar" class="stats-bar" style="display:none;" aria-label="Feed statistics">
+      <div class="stat-chip">
+        📅 <span id="stat-count">–</span> release entries
+      </div>
+      <div class="stat-chip">
+        🕐 Last update: <span id="stat-updated">–</span>
+      </div>
+      <div class="stat-chip">
+        🐦 Click any entry to compose a Tweet
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div id="loading-panel" role="status" aria-live="polite">
+      <div class="big-spinner" aria-hidden="true"></div>
+      <p>Fetching release notes from Google Cloud…</p>
+    </div>
+
+    <!-- Error -->
+    <div id="error-panel" class="state-panel" style="display:none;" role="alert">
+      <div class="state-icon">⚠</div>
+      <p class="state-title">Something went wrong</p>
+      <p class="state-msg" id="error-msg"></p>
+    </div>
+
+    <!-- Entries -->
+    <section id="entries-feed"
+             style="display:none;"
+             aria-label="BigQuery release notes entries"
+             aria-live="polite">
+    </section>
+
+  </main>
+
+  <!-- ── Tweet Compose Panel ───────────────────── -->
+  <aside id="tweet-panel" role="complementary" aria-label="Compose Tweet" aria-hidden="true">
+    <div class="tweet-panel-header">
+      <div class="tweet-panel-title">
+        <span class="tweet-x-logo" aria-label="X (Twitter)">𝕏</span>
+        Compose Tweet
+      </div>
+      <button class="tweet-close-btn" id="tweet-close-btn" aria-label="Close tweet composer">✕</button>
+    </div>
+    <div class="tweet-panel-body">
+      <p class="tweet-selected-info">
+        📅 Selected: <span class="tweet-selected-date" id="tweet-date-label"></span>
+      </p>
+      <textarea
+        id="tweet-text"
+        placeholder="Your tweet will appear here. Edit as needed before posting…"
+        aria-label="Tweet text"
+        maxlength="500"
+      ></textarea>
+      <div class="tweet-meta">
+        <span id="char-count" class="char-count">0 / 280</span>
+        <button id="tweet-link" class="tweet-submit-btn" aria-label="Open Twitter to post this tweet">
+          <span aria-hidden="true">𝕏</span> Post on X
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
